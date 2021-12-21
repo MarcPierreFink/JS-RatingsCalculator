@@ -5,7 +5,7 @@ function collect_ratings(){
     let rating=0
     
 
-    let ratings={
+    const ratings={
         count: 0,
         sum: 0,
         average:0
@@ -21,6 +21,7 @@ function collect_ratings(){
 
         ratings.count+=parseInt(element.value);
         ratings.sum=rating*parseInt(element.value);
+    });
 
         if (ratings.count!==0){
 
@@ -28,23 +29,15 @@ function collect_ratings(){
 
         }
 
+        return ratings;
 
-    });
-
-
- return ratings;
    
 
    
 };
 
 
-    document.addEventListener('change', () => {
-        const ratings = collect_ratings();
-        
-        document.querySelectorAll('average').value=ratings.average.toFixed(2);
-});
-
-
-
-
+document.addEventListener('change', () => {
+    const ratings = collect_ratings();
+    document.querySelector('#average').value = ratings.average.toFixed(2);
+  }); 
