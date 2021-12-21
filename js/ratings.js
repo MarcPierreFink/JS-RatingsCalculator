@@ -1,6 +1,5 @@
 function collect_ratings(){
 
-    const elements= document.querySelectorAll('.rating');
     
     let rating=0
     
@@ -13,25 +12,18 @@ function collect_ratings(){
 
 
 
-    elements.forEach((element) => {
-       
+    const elements = document.querySelectorAll('.rating');
+  elements.forEach(element => {
+    rating = parseInt(element.id.replace('star', ''));
+    ratings.count += parseInt(element.value);
+    ratings.sum += parseInt(element.value) * rating;
+  });
 
-        element.id=element.id.replace('star','');
-        rating=parseInt(element.id);
+  if (ratings.count !== 0) {
+    ratings.average = ratings.sum / ratings.count;
+  }
 
-        ratings.count+=parseInt(element.value);
-        ratings.sum=rating*parseInt(element.value);
-    });
-
-        if (ratings.count!==0){
-
-            ratings.average=ratings.sum/ratings.count;
-
-        }
-
-        return ratings;
-
-   
+  return ratings;
 
    
 };
